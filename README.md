@@ -9,6 +9,8 @@ clone this repo
 there are 3 folders, depending on what you want to install `cd` into it
 now you can check and modify the config.h file or just `sudo make install`
 
+by the way, you will need the package "font-awesome5" if you want to have icons in the top bar
+
 ## Especific dwm config
 Using a text editor like nano or vim, edit the .xinitrc file in home directory add
 
