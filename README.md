@@ -7,7 +7,7 @@ clone this repo
 
 `cd suckless`
 there are 3 folders, depending on what you want to install `cd` into it
-now you can check and modify the config.h file or just `sudo make install`
+now you can check and modify the config.h file or just `sudo make clean install`
 
 by the way, you will need the package "font-awesome5" if you want to have icons in the top bar
 
@@ -19,3 +19,16 @@ Using a text editor like nano or vim, edit the .xinitrc file in home directory a
 then you can use `startx` to enter dwm
 
 **if you can't compile dwm, maybe you have some missing packages**
+try installing
+
+`base-devel`
+
+`libX11`
+
+`xorg-server`
+
+`xorg-init`
+
+`libxinerama`
+
+`libxft`
