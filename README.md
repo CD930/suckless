@@ -22,13 +22,8 @@ then you can use `startx` to enter dwm
 try installing
 
 `base-devel`
-
 `libX11`
-
 `xorg-server`
-
 `xorg-init`
-
 `libxinerama`
-
 `libxft`
