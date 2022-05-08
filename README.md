@@ -18,7 +18,7 @@ Using a text editor like nano or vim, edit the .xinitrc file in home directory a
 
 then you can use `startx` to enter dwm
 
-**if you can't compile dwm, maybe you have some missing packages**
+**if you get errors at compiling, maybe you have some missing packages**
 try installing
 
 `base-devel`
