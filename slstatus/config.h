@@ -60,7 +60,7 @@ static const char unknown_str[] = "n/a";
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
  */
 static const struct arg args[] = {
-    { run_command, "%s%% | ", "xbps-query -l | wc -l" },
+    { run_command, "%s | ", "xbps-query -l | wc -l" },
     { run_command, "%s%% | ", "pamixer --get-volume" },
 	{ temp, "%s° | ", "/sys/class/thermal/thermal_zone0/temp" },
 	{ battery_perc, "%s%% | ", "BAT1" },
