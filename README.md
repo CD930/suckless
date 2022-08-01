@@ -3,7 +3,9 @@ My config of some suckless software, especifically dwm, st and slstatus
 ## Install
 clone this repo
 
-```$ git clone --depth=1 https://github.com/grezzzo/suckless```
+```sh
+git clone --depth=1 https://github.com/grezzzo/suckless
+```
 
 `$ cd suckless`
 
