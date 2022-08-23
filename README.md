@@ -4,7 +4,7 @@ My config of some suckless software, especifically dwm, st and slstatus
 clone this repo
 
 ```sh
-git clone --depth=1 https://github.com/grezzzo/suckless
+git clone --depth=1 https://github.com/CD930/suckless
 ```
 
 `$ cd suckless`
