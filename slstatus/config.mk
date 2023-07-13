@@ -17,4 +17,4 @@ LDFLAGS  = -L$(X11LIB) -s
 LDLIBS   = -lX11
 
 # compiler and linker
-CC = tcc
+CC = gcc
