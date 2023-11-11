@@ -3,6 +3,7 @@
 /* Constants */
 #define TERMINAL "st"
 #define TERMCLASS "St"
+#define BROWSER "ungoogled-chromium"
 
 /* appearance */
 static unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -160,7 +161,7 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_Tab,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_q,		killclient,	{0} },
 	{ MODKEY|ShiftMask,		XK_q,		spawn,		SHCMD("qbittorrent") },
-	{ MODKEY,			XK_w,		spawn,		SHCMD("ungoogled-chromium") },
+	{ MODKEY,			XK_w,		spawn,		{.v = (const char*[]){ BROWSER, NULL } } },
 	{ MODKEY,			XK_e,		spawn,		SHCMD(TERMINAL " -e nnn") },
 	{ MODKEY,			XK_r,		spawn,		SHCMD(TERMINAL " -e lfub") },
 	{ MODKEY|ShiftMask,		XK_r,		spawn,		SHCMD(TERMINAL " -e btop") },
@@ -177,13 +178,12 @@ static Key keys[] = {
 	{ MODKEY,			XK_p,			spawn,		SHCMD("") },
 	{ MODKEY,			XK_backslash,		view,		{0} },
 	/* { MODKEY|ShiftMask,		XK_backslash,		spawn,		SHCMD("") }, */
-
 	{ MODKEY,			XK_a,		togglegaps,	{0} },
 	{ MODKEY|ShiftMask,		XK_a,		defaultgaps,	{0} },
 	{ MODKEY,			XK_s,		togglesticky,	{0} },
 	{ MODKEY|ShiftMask,		XK_s,		spawn,		SHCMD("steam") },
 	{ MODKEY,			XK_d,		spawn,          SHCMD("dmenu_run") },
-	{ MODKEY|ShiftMask,		XK_d,		spawn,		SHCMD("passmenu") },
+	{ MODKEY|ShiftMask,		XK_d,		spawn,		SHCMD("passmenu -l 15") },
 	{ MODKEY,			XK_f,		togglefullscr,	{0} },
 	{ MODKEY|ShiftMask,		XK_f,		setlayout,	{.v = &layouts[8]} },
 	{ MODKEY,			XK_g,		shiftview,	{ .i = -1 } },
@@ -203,13 +203,14 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_z,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_x,		incrgaps,	{.i = -3 } },
 	/* { MODKEY|ShiftMask,		XK_x,		spawn,		SHCMD("") }, */
-	/* { MODKEY,			XK_c,		spawn,		SHCMD("") }, */
+	{ MODKEY,			XK_c,		spawn,		{.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL} } },
 	/* { MODKEY|ShiftMask,		XK_c,		spawn,		SHCMD("") }, */
 	/* V is automatically bound above in STACKKEYS */
 	{ MODKEY,			XK_b,		togglebar,	{0} },
-	/* { MODKEY|ShiftMask,		XK_b,		spawn,		SHCMD("") }, */
-	{ MODKEY,			XK_n,		spawn,		SHCMD(TERMINAL "-e neomutt") },
-	{ MODKEY,			XK_m,		spawn,		SHCMD(TERMINAL "-e cmus") },
+	{ MODKEY|ShiftMask,		XK_b,		spawn,		SHCMD("cat dox/bookmarks | dmenu -l 15") },
+	{ MODKEY,			XK_n,		spawn,		SHCMD(TERMINAL " -e neomutt") },
+	/* { MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD("") }, */ 
+	{ MODKEY,			XK_m,		spawn,		{.v = (const char* []){ TERMINAL, "-e", "cmus", NULL } } },
 	{ MODKEY|ShiftMask,		XK_m,		spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 
 	{ MODKEY,			XK_Left,	focusmon,	{.i = -1 } },
@@ -225,7 +226,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_F4,		spawn,		SHCMD(TERMINAL " -e pulsemixer; kill -44 $(pidof dwmblocks)") },
 	/* { MODKEY,			XK_F5,		xrdb,		{.v = NULL } }, */
 	{ MODKEY,			XK_F7,		spawn,		SHCMD("td-toggle") },
-	{ MODKEY,			XK_F8,		spawn,		SHCMD("mw -Y") },
+	{ MODKEY,			XK_F8,		spawn,		SHCMD("mailsync") },
 	{ MODKEY,			XK_F9,		spawn,		SHCMD("setxkbmap latam") },
 	{ MODKEY,			XK_F10,		spawn,		SHCMD("setxkbmap ru") },
 	{ MODKEY,			XK_F11,		spawn,		SHCMD("mpv --untimed --no-cache --no-osc --no-input-default-bindings --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
@@ -247,12 +248,13 @@ static Key keys[] = {
 	{ 0, XF86XK_AudioPrev,		spawn,		SHCMD("cmus-remote -r") },
 	{ 0, XF86XK_AudioNext,		spawn,		SHCMD("cmus-remote -n") },
 	{ 0, XF86XK_AudioPause,		spawn,		SHCMD("cmus-remote -u") },
+	{ 0, XF86XK_AudioPlay,		spawn,		SHCMD("cmus-remote -u") },
 	{ 0, XF86XK_PowerOff,		spawn,		SHCMD("sysact") },
 	{ 0, XF86XK_Calculator,		spawn,		SHCMD(TERMINAL " -e bc -l") },
 	{ 0, XF86XK_Sleep,		spawn,		SHCMD("sudo -A zzz") },
 	{ 0, XF86XK_DOS,		spawn,		SHCMD(TERMINAL) },
 	{ 0, XF86XK_ScreenSaver,	spawn,		SHCMD("slock & xset dpms force off; mpc pause; pauseallmpv") },
-	{ 0, XF86XK_TaskPane,		spawn,		SHCMD(TERMINAL " btop") },
+	{ 0, XF86XK_TaskPane,		spawn,		SHCMD(TERMINAL "btop") },
 	/* { 0, XF86XK_Battery,		spawn,		SHCMD("") }, */
 	{ 0, XF86XK_Launch1,		spawn,		SHCMD("xset dpms force off") },
 	{ 0, XF86XK_MonBrightnessUp,	spawn,		SHCMD("xbacklight -inc 15") },
